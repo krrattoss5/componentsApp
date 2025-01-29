@@ -1,8 +1,8 @@
 import React from 'react';
-import {CustomView} from './CustomView';
-import {Title} from './Title';
+import {CustomView} from '../../components/ui/CustomView';
+import {Title} from '../../components/ui/Title';
 import {globalStyles} from '../../../config/theme/theme';
-import {Button} from './Button';
+import {Button} from '../../components/ui/Button';
 import {Alert, View} from 'react-native';
 import {showPrompt} from '../../../config/theme/adapters/prompt.adapter';
 
