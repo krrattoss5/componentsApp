@@ -4,7 +4,7 @@ import {Title} from './Title';
 import {globalStyles} from '../../../config/theme/theme';
 import {Button} from './Button';
 import {Alert, View} from 'react-native';
-import prompt from 'react-native-prompt-android';
+import {showPrompt} from '../../../config/theme/adapters/prompt.adapter';
 
 export const AlertScreen = () => {
   const createTwoButtonAlert = () =>
@@ -31,11 +31,11 @@ export const AlertScreen = () => {
       {text: 'OK', onPress: () => console.log('OK Pressed')},
     ]);
 
-  const showPrompt = () => {
-    prompt(
-      'Enter password',
-      'Enter your password to claim your $1.5B in lottery winnings',
-      [
+  const onShowPrompt = () => {
+    showPrompt({
+      title: 'Enter password',
+      subtitle: 'Enter your password to claim your $1.5B in lottery winnings',
+      buttons: [
         {
           text: 'Cancel',
           onPress: () => console.log('Cancel Pressed'),
@@ -46,13 +46,11 @@ export const AlertScreen = () => {
           onPress: password => console.log('OK Pressed, password: ' + password),
         },
       ],
-      {
-        type: 'secure-text',
-        cancelable: false,
-        defaultValue: 'test',
-        placeholder: 'placeholder',
-      },
-    );
+      prompType
+      : 'secure-text',
+      defaultValue: 'sdfasdfasfsdfasdf',
+      placeholder: 'placeholder',
+    });
 
     // ! solo funciona en IOS
     // Alert.prompt(
@@ -76,7 +74,7 @@ export const AlertScreen = () => {
       <Button text="Alert - 3 Botones" onPress={createThreeButtonAlert} />
       <View style={{height: 10}} />
 
-      <Button text="Prompt - Input" onPress={showPrompt} />
+      <Button text="Prompt - Input" onPress={onShowPrompt} />
       <View style={{height: 10}} />
     </CustomView>
   );
