@@ -96,6 +96,7 @@ export const HomeScreen = () => {
           ))}
 
           <View style={{marginTop: 30}} />
+
           {menuItems.map((item, index) => (
             <MenuItem
               key={item.component}
