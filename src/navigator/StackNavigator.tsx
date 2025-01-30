@@ -6,6 +6,10 @@ import {Animation102Screen} from '../presentation/screens/animations/Animation10
 import {SwitchScreen} from '../presentation/screens/switches/SwitchScreen';
 import {AlertScreen} from '../presentation/screens/alerts/AlertScreen';
 import {TextInputScreen} from '../presentation/screens/inputs/TextInputScreen';
+import {PullToRefreshScreen} from '../presentation/screens/ui/PullToRefreshScreen';
+import {CustomSectionListScreen} from '../presentation/screens/ui/CustomSectionListScreen';
+import {ModalScreen} from '../presentation/screens/ui/ModalScreen';
+import {InfiniteScrollScreen} from '../presentation/screens/ui/InfiniteScrollScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +22,19 @@ export const StackNavigator = () => {
       <Stack.Screen name="SwitchScreen" component={SwitchScreen} />
       <Stack.Screen name="AlertScreen" component={AlertScreen} />
       <Stack.Screen name="TextInputScreen" component={TextInputScreen} />
+      <Stack.Screen
+        name="PullToRefreshScreen"
+        component={PullToRefreshScreen}
+      />
+      <Stack.Screen
+        name="CustomSectionListScreen"
+        component={CustomSectionListScreen}
+      />
+      <Stack.Screen name="ModalScreen" component={ModalScreen} />
+      <Stack.Screen
+        name="InfiniteScrollScreen"
+        component={InfiniteScrollScreen}
+      />
     </Stack.Navigator>
   );
 };
