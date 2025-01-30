@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {ActivityIndicator, FlatList, Image, View} from 'react-native';
+import {ActivityIndicator, FlatList, View} from 'react-native';
 import {Title} from '../../components/ui/Title';
 import {colors} from '../../../config/theme/theme';
+import {FadeInImage} from '../../components/ui/FadeInImage';
 export const InfiniteScrollScreen = () => {
   const [numbers, setNumbers] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
 
@@ -38,9 +39,13 @@ interface Props {
 
 const ListItem = ({number}: Props) => {
   return (
-    <Image
-      source={{uri: `https://picsum.photos/id/${number}/500/400`}}
+    <FadeInImage
+      uri={`https://picsum.photos/id/${number}/500/400`}
       style={{height: 400, width: '100%'}}
     />
+    // <Image
+    //   source={{uri: `https://picsum.photos/id/${number}/500/400`}}
+    //   style={{height: 400, width: '100%'}}
+    // />
   );
 };
