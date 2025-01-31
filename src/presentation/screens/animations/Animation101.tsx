@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   Animated,
   Easing,
@@ -7,10 +7,12 @@ import {
   Text,
   View,
 } from 'react-native';
-import {colors} from '../../../config/theme/theme';
 import {useAnimation} from '../../hooks/UseAnimation';
+import {ThemeContext} from '../../context/ThemeContext';
+import {globalStyles} from '../../../config/theme/theme';
 
 export const Animation101 = () => {
+  const {colors} = useContext(ThemeContext);
   const {
     animatedOpacity,
     animatedTop,
@@ -20,7 +22,7 @@ export const Animation101 = () => {
   } = useAnimation();
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: colors.background}]}>
       <Animated.View
         style={[
           styles.purpleBox,
@@ -31,6 +33,7 @@ export const Animation101 = () => {
                 translateY: animatedTop,
               },
             ],
+            backgroundColor: colors.primary,
           },
         ]}
       />
@@ -45,11 +48,11 @@ export const Animation101 = () => {
           });
         }}
         style={{marginTop: 10}}>
-        <Text>FadeIn</Text>
+        <Text style={[globalStyles.subTitle, {color: colors.text}]}>FadeIn</Text>
       </Pressable>
 
       <Pressable onPress={() => fadeOut({})} style={{marginTop: 10}}>
-        <Text>FadeOut</Text>
+        <Text style={[globalStyles.subTitle, {color: colors.text}]}>FadeOut</Text>
       </Pressable>
     </View>
   );
@@ -62,7 +65,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   purpleBox: {
-    backgroundColor: colors.primary,
     width: 150,
     height: 150,
   },

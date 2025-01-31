@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {
   FlatList,
   Image,
@@ -9,9 +9,10 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import {colors, globalStyles} from '../../../config/theme/theme';
+import {globalStyles} from '../../../config/theme/theme';
 import {Button} from '../../components/ui/Button';
 import {useNavigation} from '@react-navigation/native';
+import {ThemeContext} from '../../context/ThemeContext';
 
 interface Slide {
   title: string;
@@ -59,6 +60,8 @@ export const SlidesScreen = () => {
     });
   };
 
+  const {colors} = useContext(ThemeContext);
+
   return (
     <View style={{flex: 1, backgroundColor: colors.background}}>
       <FlatList
@@ -97,11 +100,13 @@ const SlideItem = ({item}: SlideItemProps) => {
 
   const {desc, img, title} = item;
 
+  const {colors} = useContext(ThemeContext);
+
   return (
     <View
       style={{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: colors.cardBackground,
         borderRadius: 5,
         padding: 40,
         justifyContent: 'center',

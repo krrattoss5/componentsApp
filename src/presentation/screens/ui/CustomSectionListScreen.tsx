@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {CustomView} from '../../components/ui/CustomView';
 import {Title} from '../../components/ui/Title';
 import {Card} from '../../components/ui/Card';
 import {SectionList, Text, useWindowDimensions} from 'react-native';
 import {SubTitle} from '../../components/ui/SubTitle';
-import {colors} from '../../../config/theme/theme';
 import {Separator} from '../../components/ui/Separator';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {ThemeContext} from '../../context/ThemeContext';
 
 interface Houses {
   title: string;
@@ -93,6 +93,8 @@ const houses: Houses[] = [
 export const CustomSectionListScreen = () => {
   const {height} = useWindowDimensions();
   const {top} = useSafeAreaInsets();
+  const {colors} = useContext(ThemeContext);
+
   return (
     <CustomView globalMargin>
       <Title text="Lista de personajes" />
@@ -102,7 +104,7 @@ export const CustomSectionListScreen = () => {
           sections={houses}
           keyExtractor={item => item}
           renderItem={({item}) => (
-            <Text style={{marginVertical: 2}}>{item}</Text>
+            <Text style={{marginVertical: 2, color:colors.text}}>{item}</Text>
           )}
           renderSectionHeader={({section}) => (
             <SubTitle

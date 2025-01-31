@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {CustomView} from '../../components/ui/CustomView';
 import {Card} from '../../components/ui/Card';
 import {CustomSwitch} from '../../components/ui/CustomSwitch';
-import { Separator } from '../../components/ui/Separator';
+import {Separator} from '../../components/ui/Separator';
 
 export const SwitchScreen = () => {
   const [state, setState] = useState({
@@ -12,7 +12,7 @@ export const SwitchScreen = () => {
   });
 
   return (
-    <CustomView style={{paddingHorizontal: 10}}>
+    <CustomView globalMargin>
       <Card>
         <CustomSwitch
           isOn={state.isActive}
