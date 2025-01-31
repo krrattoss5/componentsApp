@@ -1,21 +1,29 @@
 import 'react-native-gesture-handler';
-import React, {PropsWithChildren} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import React, {PropsWithChildren, useContext} from 'react';
+import {DarkTheme, DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {StackNavigator} from './navigator/StackNavigator';
-import {ThemeProvider} from './presentation/context/ThemeContext';
+import {ThemeContext, ThemeProvider} from './presentation/context/ThemeContext';
+
+const AppTheme = ({children}: PropsWithChildren) => {
+  return (
+    <ThemeProvider>
+      <AppState>{children}</AppState>
+    </ThemeProvider>
+  );
+};
 
 const AppState = ({children}: PropsWithChildren) => {
+  const {isDark} = useContext(ThemeContext);
+
   return (
-    <NavigationContainer>
-      <ThemeProvider>{children}</ThemeProvider>
-    </NavigationContainer>
+    <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>{children}</NavigationContainer>
   );
 };
 
 export const App = () => {
   return (
-    <AppState>
+    <AppTheme>
       <StackNavigator />
-    </AppState>
+    </AppTheme>
   );
 };
